@@ -1,4 +1,3 @@
-#TEST REMI
 import msvcrt
 import time
 import os
@@ -16,6 +15,7 @@ def saveLoad(writeRead):
 		camp, nivCAMP = camp.split("_")
 		print(hdv, nivHDV, ",", cas, nivCAS, ",", camp, nivCAMP)
 		fichier.close()
+
 
 gold = int(0)
 elixir = int(0)
@@ -64,7 +64,7 @@ while 1:
 			elif str(keyPressed) == "b'n'":
 				print("\nTrès bien, à bientôt dans la boutique!\n")
 			
-			elif:
+			else:
 				print("Mauvaise touche, appuyez sur 'q' pour quitter!")
 
 
@@ -87,7 +87,7 @@ while 1:
 			elif str(keyPressed) == "b'n'":
 				print("\nTrès bien, à bientôt dans la boutique!\n")
 			
-			elif:
+			else:
 				print("Mauvaise touche, appuyez sur 'q' pour quitter!")
 
 
@@ -103,7 +103,7 @@ while 1:
 			elif str(keyPressed) == "b'n'":
 				print("\nTrès bien, à bientôt dans la boutique!\n")
 			
-			elif:
+			else:
 				print("Mauvaise touche, appuyez sur 'q' pour quitter!")		
 
 
