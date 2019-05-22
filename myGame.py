@@ -7,6 +7,7 @@ def saveLoad(writeRead, ORE, LIQUID):
 		fichier = open("sauvegardeJeu.txt", "w")
 		fichier.write(toWrite)
 		fichier.close()
+		quit()
 
 	elif writeRead == 2:
 		fichier = open("sauvegardeJeu.txt", "r")
@@ -31,31 +32,31 @@ def main():
 
 	while 1:
 
-
 	#MENU DES ACTIONS
-		action = input("""----------    Menu, choisissez vos actions:			   Appuyez sur Q pour quitter.\n\n1: Voir le niveau de vos batiments\n2: Voir le montant de vos ressources
-3: Améliorer un batiment\n4: Obtenir des ressources\n5: Sauvegarder et quitter\n\nChoix:""")
+		print("""----------    Menu, choisissez vos actions:			   Appuyez sur Q pour quitter.\n\n1: Voir le niveau de vos batiments\n2: Voir le montant de vos ressources
+3: Améliorer un batiment\n4: Obtenir des ressources\n5: Sauvegarder et quitter\n\nChoix:""", end='')
+		action = msvcrt.getch()
 		print("\n---------------------")
 
 
-
 	#ACTION 1 -- AFFICHAGE NIVEAU BATIMENTS
-		if action == "1":
+		if str(action) == "b'1'":
 			print("\nHDV niveau: ", nivHDV, "\nCaserne niveau: ", nivCAS, "\nCamp niveau: ", nivCAMP, "\n")
 
 
 	#ACTION 2 -- AFFICHAGE GOLD / ELIXIR
-		elif action == "2":
+		elif str(action) == "b'2'":
 			print("\nOr: ", gold, sep = '')
 			print("Elixir: ", elixir, "\n")
 
 
 
 	#ACTION 3 -- AMELIORER UN BATIMENT
-		elif action == "3":
+		elif str(action) == "b'3'":
 			batUp = int(input("\nQuel batiment souhaitez-vous améliorer ?\n1: HDV\n2: Caserne\n3: Camp\n4: Mine or\n5: Mine elixir\nChoix:"))
 			if batUp == 1:		#Amélioration HDV
-				yesNo = input("\nVous avez besoin de 100 gold pour améliorer ce bâtiment. Etes vous sûr ?\nAppuyez sur 'o' si oui, sinon appuyez sur 'n'\nChoix: ")
+				print("\nVous avez besoin de 100 gold pour améliorer ce bâtiment. Etes vous sûr ?\nAppuyez sur 'o' si oui, sinon appuyez sur 'n'\nChoix: ")
+				keyPressed = msvcrt.getch()
 				if str(keyPressed) == "b'o'":
 					if gold >= 100:
 						nivHDV += 1				
@@ -78,7 +79,8 @@ def main():
 					print("Vous n'avez pas assez d'or!\n")"""
 
 			elif batUp == 2:	#Amélioration Caserne
-				yesNo = input("Vous avez besoin de 200 gold pour améliorer ce bâtiment. Etes vous sûr ?\nAppuyez sur 'o' si oui, sinon appuyez sur 'n'\nChoix: ")
+				print("Vous avez besoin de 200 gold pour améliorer ce bâtiment. Etes vous sûr ?\nAppuyez sur 'o' si oui, sinon appuyez sur 'n'\nChoix: ")
+				keyPressed = msvcrt.getch()
 				if str(keyPressed) == "b'o'":
 					if gold >= 200:
 						nivCAS += 1				
@@ -94,7 +96,8 @@ def main():
 
 
 			elif batUp == 3:	#Amélioration camp
-				yesNo = input("Vous avez besoin de 50 gold pour améliorer ce bâtiment. Etes vous sûr ?\nAppuyez sur 'o' si oui, sinon appuyez sur 'n'\nChoix: ")
+				print("Vous avez besoin de 50 gold pour améliorer ce bâtiment. Etes vous sûr ?\nAppuyez sur 'o' si oui, sinon appuyez sur 'n'\nChoix: ")
+				keyPressed = msvcrt.getch()
 				if str(keyPressed) == "b'o'":
 					if gold >= 50:
 						nivCAMP += 1				
@@ -111,7 +114,7 @@ def main():
 
 
 	#ACTION 4 -- MINE D'OR / D'ELIXIR
-		elif action == "4":
+		elif str(action) == "b'4'":
 			print("\nAppuyez sur 'o' pour gagner de l'or, 'e' pour gagner de l'elixir ou 'q' pour quitter")
 			while 1:
 				time.sleep(0.05)
@@ -126,22 +129,22 @@ def main():
 					print("\n")
 					break
 				else:
-					print("Mauvaise touche: ", keyPressed)
+					print("Mauvaise touche")
 
 
 
 	#ACTION 5 -- SAUVEGARDER ET QUITTER
-		elif action == "5":
+		elif str(action) == "b'5'":
 			saveLoad(1, gold, elixir)
 			print("\n")
 
 	#ACTION Q -- QUITTER
-		elif action.lower() == "q":
+		elif str(action).lower() == "b'q'":
 			quit()
 
 	#ACTION AUTRES -- ERREUR
 		else:
 			main()
-
+saveLoad(2, 0, 0)
 main()
 os.system("pause")
