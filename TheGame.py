@@ -8,8 +8,8 @@ def saveLoad(writeRead, ORE, LIQUID, nivHDV, nivCAS, nivCAMP):
 		fichier.write(toWrite)
 		fichier.close()
 		quit()
-x
-	elif writeRead == 2:
+
+	elif writeRead == 2: 
 		fichier = open("gameSave.txt", "r")
 		hdv,cas,camp = fichier.read().split("$")
 		hdv, nivHDV = hdv.split("_")
