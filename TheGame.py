@@ -4,13 +4,13 @@ import os
 def saveLoad(writeRead, ORE, LIQUID, nivHDV, nivCAS, nivCAMP):
 	if writeRead == 1:
 		toWrite = ("Gold : " + str(ORE) + " $Elixir :" + str(LIQUID) +  "$Niveau HDV :" + str(nivHDV) + "$Niveau caserne :" + str(nivCAS) + "$Niveau camp :" + str(nivCAMP))
-		fichier = open("sauvegardeJeu.txt", "w")
+		fichier = open("gameSave.txt", "w")
 		fichier.write(toWrite)
 		fichier.close()
 		quit()
-
+x
 	elif writeRead == 2:
-		fichier = open("sauvegardeJeu.txt", "r")
+		fichier = open("gameSave.txt", "r")
 		hdv,cas,camp = fichier.read().split("$")
 		hdv, nivHDV = hdv.split("_")
 		cas, nivCAS = cas.split("_")
