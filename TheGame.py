@@ -1,9 +1,9 @@
 import msvcrt
 import time
 import os
-def saveLoad(writeRead, ORE, LIQUID, nivHDV, nivCAS, nivCAMP):
+def saveLoad(writeRead, ORE, LIQUID, NivHDV, NivCAS, NivCAMP, NivMineOr, NivMineElixir):
 	if writeRead == 1:
-		toWrite = ("Gold : " + str(ORE) + " $Elixir :" + str(LIQUID) +  "$Niveau HDV :" + str(nivHDV) + "$Niveau caserne :" + str(nivCAS) + "$Niveau camp :" + str(nivCAMP))
+		toWrite = ("Gold : " + str(ORE) + " $Elixir :" + str(LIQUID) +  "$Niveau HDV :" + str(NivHDV) + "$Niveau caserne :" + str(NivCAS) + "$Niveau camp :" + str(NivCAMP)+ "$Niveau mine Or :" + str(NivMineOr)+ "$Niveau mine Elixir :" + str(NivMineElixir))
 		fichier = open("gameSave.txt", "w")
 		fichier.write(toWrite)
 		fichier.close()
@@ -167,7 +167,7 @@ def main():
 
 	#ACTION 5 -- SAUVEGARDER ET QUITTER
 		elif str(action) == "b'5'": 
-			saveLoad(1, gold, elixir, nivHDV, nivCAS, nivCAMP)
+			saveLoad(1, gold, elixir, nivHDV, nivCAS, nivCAMP, nivMineOr, nivMineElixir)
 			print("\n")
 
 	#ACTION Q -- QUITTER
