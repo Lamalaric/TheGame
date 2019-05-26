@@ -1,9 +1,10 @@
 import msvcrt
 import time
 import os
-def saveLoad(writeRead, ORE, LIQUID, NivHDV, NivCAS, NivCAMP, NivMineOr, NivMineElixir):
+
+def saveLoad(writeRead):
 	if writeRead == 1:
-		toWrite = ("Gold : " + str(ORE) + " $Elixir :" + str(LIQUID) +  "$Niveau HDV :" + str(NivHDV) + "$Niveau caserne :" + str(NivCAS) + "$Niveau camp :" + str(NivCAMP)+ "$Niveau mine Or :" + str(NivMineOr)+ "$Niveau mine Elixir :" + str(NivMineElixir))
+		toWrite = (str(gold) + "$" + str(elixir) +  "$" + str(nivHDV) + "$" + str(nivCAS) + "$" + str(nivCAMP)+ "$" + str(nivMineOr)+ "$" + str(nivMineElixir))
 		fichier = open("gameSave.txt", "w")
 		fichier.write(toWrite)
 		fichier.close()
@@ -11,24 +12,12 @@ def saveLoad(writeRead, ORE, LIQUID, NivHDV, NivCAS, NivCAMP, NivMineOr, NivMine
 
 	elif writeRead == 2: 
 		fichier = open("gameSave.txt", "r")
-		hdv,cas,camp = fichier.read().split("$")
-		hdv, nivHDV = hdv.split("_")
-		cas, nivCAS = cas.split("_")
-		camp, nivCAMP = camp.split("_")
-		print(hdv, nivHDV, ",", cas, nivCAS, ",", camp, nivCAMP)
+		global Gold, Elixir, NivHDV, NivCAS, NivCAMP, NivMineOr, NivMineElixir
+		gold, elixir, nivHDV, nivCAS, nivCAMP, nivMineOr, nivMineElixir = fichier.read().split("$")
+		Gold, Elixir, NivHDV, NivCAS, NivCAMP, NivMineOr, NivMineElixir = gold, elixir, nivHDV, nivCAS, nivCAMP, nivMineElixir, nivMineElixir
 		fichier.close()
 
 def main():
-
-
-	gold = int(500)
-	elixir = int(500)
-	nivMineOr = int(1)
-	nivMineElixir = int(1)
-	nivHDV = int(1)
-	nivCAS = int(1)
-	nivCAMP = (1)
-
 
 	while 1:
 
@@ -167,7 +156,7 @@ def main():
 
 	#ACTION 5 -- SAUVEGARDER ET QUITTER
 		elif str(action) == "b'5'": 
-			saveLoad(1, gold, elixir, nivHDV, nivCAS, nivCAMP, nivMineOr, nivMineElixir)
+			saveLoad(1)
 			print("\n")
 
 	#ACTION Q -- QUITTER
@@ -178,7 +167,14 @@ def main():
 		else:
 			main()
 
-			
+saveLoad(2)
+Gold = int(Gold)
+Elixir = int(Elixir)
+NivMineOr = int(NivMineOr)
+NivMineElixir = int(NivMineElixir)
+NivHDV = int(NivHDV)
+NivCAS = int(NivCAS)
+NivCAMP = int(NivCAMP)
 
 main()
 os.system("pause")
